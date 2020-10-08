@@ -1,0 +1,8 @@
+*.aux
+*.log
+*.out
+*_cache/
+*_files/
+10years_reconciliation.tex
+.Rproj.user
+renv/
