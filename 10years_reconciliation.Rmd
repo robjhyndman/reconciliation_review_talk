@@ -34,11 +34,32 @@ library(patchwork)
 
 # Hierarchical forecasting 20 years ago
 
-## Australian tourism
-\placefig{-0.3}{1.4}{width=9.4cm, height=20cm, keepaspectratio=TRUE}{regions1_with_labels}
 
-\only<2>{\begin{textblock}{6.4}(9.3,1.4)
-\begin{block}{}
+## Australian tourism regions
+
+```{r ausmap, echo=FALSE, message=FALSE, width=20, height=20}
+library(sf)
+# Use Okabe-Ito color-blind friendly color palette
+state_colors <- c(
+  `New South Wales` = "#56b4e9",
+  `Victoria` = "#0072b2",
+  `Queensland` = "#009e73",
+  `South Australia` = "#f0e442",
+  `Northern Territory` = "#d55e00",
+  `Western Australia` = "#e69f00",
+  `Tasmania` = "#cc79a7",
+  `Australian Capital Territory` = "#cccccc"
+)
+read_sf("tourism/Tourism_Regions_2020.shp") %>%
+  rename(State = "STE_NAME16") %>%
+  ggplot() +
+  geom_sf(aes(fill = State), alpha = 0.8) +
+  theme_void() +
+  scale_fill_manual(values = state_colors)
+```
+
+\only<2>{\begin{textblock}{6.4}(9.1,1.4)
+\begin{block}{}%\fontsize{13}{14}\sf
   \begin{itemize}\itemsep=0cm\parskip=0cm
     \item Monthly data on visitor night from 1998 -- 2017
     \item From \textit{National Visitor Survey}, annual interviews of 120,000 Australians aged 15+.
@@ -264,7 +285,7 @@ p1 <- gspapers %>%
                        `Hierarchical forecasting` = "#7570b3"))
 
 # Similar plot for ISF programs
- 
+
 library(pdftools)
 library(stringr)
 isf <- tibble(
@@ -622,10 +643,10 @@ If $\psi$ is a linear function, then $\tilde{\bm{y}}_{t+h|t}=\bS\bG\hat{\bm{y}}_
 \item $\bS$ creates linear combinations.
 \end{itemize}
 \only<2->{\begin{block}{Mean}\vspace*{-0.3cm}
-$$\E[\tilde{\by}_{T+h|T} \mid \by_1,\dots,\by_n] 
-            = \E[\by_{T+h|T} \mid \by_1,\dots,\by_n] 
+$$\E[\tilde{\by}_{T+h|T} \mid \by_1,\dots,\by_n]
+            = \E[\by_{T+h|T} \mid \by_1,\dots,\by_n]
 $$
-provided $\bS\bG\bS' = \bS$ 
+provided $\bS\bG\bS' = \bS$
 and
 $$\E[\hat{\by}_{T+h|T} \mid \by_1,\dots,\by_n] = \E[\by_{T+h|T} \mid \by_1,\dots,\by_n]$$
 i.e., reconciled forecasts are unbiased if base forecasts are unbiased and $\bS\bG$ is a projection.
@@ -702,7 +723,7 @@ If the base forecasts are from a linear regression model, then we can produce co
 
 \begin{block}{}
 \centerline{$\bm{V}_h = \sigma^2\bm{S}(\bm{S}'\bm{\Lambda}_s\bm{S})^{-1}\bm{S}'\bm{\Lambda}_s\left[1 + \bm{X}_{T+h}^*(\bm{X}'\bm{X})^{-1}(\bm{X}_{T+h}^*)'\right] \bm{\Lambda}_s\bm{S}'(\bm{S}'\bm{\Lambda}_s\bm{S})^{-1}\bm{S}'$}
-where $\sigma^2$ is the variance of the base model residuals. 
+where $\sigma^2$ is the variance of the base model residuals.
 \end{block}\vspace*{-0.1cm}
 
 Reference: @lhf. \url{robjhyndman.com/publications/lhf/}
