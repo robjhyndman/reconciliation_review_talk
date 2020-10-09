@@ -705,138 +705,6 @@ These approximate MinT by assuming $\bm{W}_h = k_h \bm{W}_1$.
 \end{block}
 \end{textblock}
 
-
-
-## Reconciled linear regression forecasts
-
-If the base forecasts are from a linear regression model, then we can produce coherent forecasts in one step:
-\begin{block}{}
-\centerline{$\tilde{\bm{y}}_{T+h} = \bm{S}(\bm{S}'\bm{\Lambda}_s\bm{S})^{-1}\bm{S}'\bm{\Lambda}_s
-                            \bm{X}_{T+h}^* (\bm{X}'\bm{X})^{-1} \bm{X}'\bm{Y}$}
-\end{block}\vspace*{-0.1cm}
-
- * $\bm{X}$ is matrix of predictors for training set.
- * $\bm{X}^*_{T+h}$ is vector of predictors for time $T+h$.
-
-\vspace*{-0.1cm}
-
-\begin{block}{}
-\centerline{$\bm{V}_h = \sigma^2\bm{S}(\bm{S}'\bm{\Lambda}_s\bm{S})^{-1}\bm{S}'\bm{\Lambda}_s\left[1 + \bm{X}_{T+h}^*(\bm{X}'\bm{X})^{-1}(\bm{X}_{T+h}^*)'\right] \bm{\Lambda}_s\bm{S}'(\bm{S}'\bm{\Lambda}_s\bm{S})^{-1}\bm{S}'$}
-where $\sigma^2$ is the variance of the base model residuals.
-\end{block}\vspace*{-0.1cm}
-
-Reference: @lhf. \url{robjhyndman.com/publications/lhf/}
-
-## Non-negative forecast reconciliation
-
-Non-negative constraints
-
-## Temporal and cross-temporal reconciliation
-
-* @Kourentzes2019
-* @Di_Fonzo2020
-* @Punia2020
-
-# Probabilistic forecast reconciliation
-
-## Coherent probabilistic forecasts
-\begin{textblock}{9.5}(0.2,1.2)\fontsize{13}{15}\sf
-\begin{block}{Coherent probabilistic forecasts}
-Given the triple $(\mathbb{R}^m, \mathscr{F}_{\mathbb{R}^m}, \nu)$, a coherent probability triple $(\mathfrak{s}, \mathscr{F}_{\mathfrak{s}}, \breve{\nu})$  is such that
-$$
-  \breve{\nu}(s(\mathcal{B})) = \nu(\mathcal{B}) \quad \forall \mathcal{B} \in \mathscr{F}_{\mathbb{R}^m}.
-$$
-\end{block}\vspace*{-0.2cm}
-\begin{block}{Probabilistic forecast reconciliation}
-The reconciled probability measure of $\hat{\nu}$ wrt $\psi(.)$ is such that
-  \[
-  \tilde{\nu}(\mathcal{B}) = \hat{\nu}(\psi^{-1}(\mathcal{B})) \qquad \forall \mathcal{B} \in \mathscr{F}_{\mathfrak{s}}\,,
-  \]
-  where $\psi^{-1}(\mathcal{B}):=\{{\bm{y}}\in \mathbb{R}^n:\psi({\bm{y}})\in \mathcal{B}\}$ is the pre-image of $\mathcal{B}$, that is the set of all points in $\mathbb{R}^n$ that $\psi(.)$ maps to a point in $\mathcal{B}$.
-\end{block}
-\end{textblock}
-\begin{textblock}{7}(9.5,1.2)
-\resizebox{\textwidth}{!}{
-\input figs/probforerec_schematic.tex
-}
-\end{textblock}
-
-## Construction of reconciled distributions
-
-\begin{block}{Reconciled density of bottom-level}
-Density of bottom-level series under reconciled distribution is
-$$
-  \tilde{f}_{\bm{b}}(\bm{b})=|\bG^*|\int \hat{f}(\bG^{-}\bm{b}+\bG_\perp \bm{a})d\bm{a}
-$$
-\vspace*{-0.5cm}\begin{itemize}
-\item $\hat{f}$ is density of incoherent base probabilistic forecast
-\item $\bm{G^-}$ is $n\times m$ generalised inverse of $\bG$ st $\bG\bG^-=\bm{I}$
-\item $\bm{G_\perp}$ is $n\times (n-m)$ orthogonal complement to $\bG$ st $\bG\bG_\perp=\bm{0}$
-\item $\bG^*=\left(\bG^-\,\vdots\,\bG_\perp\right)$, and $\bm{b}$ and $\bm{a}$ are obtained via\newline the change of variables $\bm{y}=\bG^*\begin{pmatrix}\bm{b}\\\bm{a}\end{pmatrix}$
-\end{itemize}
-\end{block}
-\vspace*{10cm}
-
-## Construction of reconciled distributions
-
-\begin{block}{Reconciled density of full hierarchy}\fontsize{14}{15}\sf
-Density of full hierarchy under reconciled distribution is
-$$
-  \tilde{f}_{\bm{y}}(\bm{y}) =
-  |\bS^*| \tilde{f}_{\bm{b}}({\bS^-\bm{y}})
-  \mathbb{1}\{\bm{y}\in\mathfrak{s}\}
-$$
-\vspace*{-0.5cm}\begin{itemize}
-\item $\bS^*=\begin{pmatrix}
-  \bS^-\\
-  \bS'_\perp
-  \end{pmatrix}$
-\item $\bm{S^-}$ is $m\times n$ generalised inverse of $\bS$ such that $\bS^-\bS=\bm{I}$,
-\item $\bm{S_\perp}$ is $n\times (n-m)$ orthogonal complement to $\bS$ such that $\bS'_\perp\bS=\bm{0}$.
-\end{itemize}
-\end{block}\pause
-
-\begin{alertblock}{Gaussian reconciliation}
-If the incoherent base forecasts are $\text{N}(\hat{\bm{\mu}}, \hat{\bm{\Sigma}})$,\newline
-then the reconciled density is $\text{N}(\bS\bG\hat{\bm{\mu}}, \bS\bG\hat{\bm{\Sigma}}\bG'\bS')$.
-\end{alertblock}
-
-## Simulation from a reconciled distribution
-
-\begin{block}{}
-Suppose that $\left(\hat{\bm{y}}^{[1]},\ldots,\hat{\bm{y}}^{[L]}\right)$ is a sample drawn from an incoherent probability measure $\hat{\nu}$. Then $\left(\tilde{\bm{y}}^{[1]},\ldots,\tilde{\bm{y}}^{[L]}\right)$ where $\tilde{\bm{y}}^{[\ell]}:=\psi(\hat{\bm{y}}^{[\ell]})$ for $\ell=1,\ldots,L$, is a sample drawn from the reconciled probability measure $\tilde{\nu}$.
-\end{block}
-
-* So reconciling sample paths from incoherent distributions works.
-
-\vspace*{10cm}
-
-## Evaluating probabilistic forecasts
-\vspace*{-0.1cm}
-
-\begin{alertblock}{Proper scoring rule}
-optimized when true forecast distribution is used.
-\end{alertblock}\pause\vspace*{-0.1cm}
-
-\begin{block}{}\centering
-\begin{tabular}{llp{4.4cm}}
-    \bfseries Scoring Rule &
-    \bfseries Coherent v Incoherent &
-    \bfseries Coherent v Coherent\\
-    \midrule
-    Log Score & Not proper & $\bullet$ Ordering preserved\par\hspace*{0.3cm} if compared using\par\hspace*{0.3cm} bottom-level only\\
-    Energy Score & Proper & $\bullet$ Full hierarchy\par\hspace*{0.3cm} should be used. \par $\bullet$ Rankings may\par\hspace*{0.3cm} change otherwise.
-\end{tabular}
-\end{block}
-
-## Score optimal reconciliation
-
-Algorithm proposed by Panagiotelis et al (2020) for optimizing $\bG$ using stochastic gradient descent to optimize Energy Score.
-
-1. Compute base forecasts over a test set.
-2. Compute OLS reconciliation: $\bG = (\bS'\bS)^{-1}\bS'$
-3. Iteratively update $\bG$ using SGD with Adam method and ES objective over a test set
-
 # Example: Australian tourism
 
 ## Example: Australian tourism
@@ -877,7 +745,13 @@ fit
 
 ```{r fctourism, echo=TRUE}
 fc <- fit %>%
-  reconcile(ets_adjusted = min_trace(ets)) %>%
+  reconcile(
+    ols = min_trace(ets, method="ols"),
+    wlsv = min_trace(ets, method="wls_var"),
+    wlss = min_trace(ets, method="wls_struct"),
+    #mint_c = min_trace(ets, method="mint_cov"),
+    mint_s = min_trace(ets, method="mint_shrink"),
+  ) %>%
   forecast(h = "2 years")
 ```
 
@@ -891,7 +765,7 @@ fc
 ```{r fctourism2, dependson='fctourism', echo=TRUE, fig.width=12, fig.height=4.5}
 fc %>%
   filter(is_aggregated(state)) %>%
-  autoplot(filter(tourism_agg, year(month) > 2012), level = 95)
+  autoplot(filter(tourism_agg, year(month) > 2012), level = NULL)
 ```
 
 ## Example: Australian tourism
@@ -900,7 +774,7 @@ fc %>%
 ```{r fctourism3, dependson='fctourism', echo=TRUE, fig.width=12, fig.height=4.5}
 fc %>%
   filter(state == "NSW" & is_aggregated(zone)) %>%
-  autoplot(filter(tourism_agg, year(month) > 2012), level = 95)
+  autoplot(filter(tourism_agg, year(month) > 2012), level = NULL)
 ```
 
 ## Example: Australian tourism
@@ -909,7 +783,7 @@ fc %>%
 ```{r fctourism4, dependson='fctourism', echo=TRUE, fig.width=12, fig.height=4.5}
 fc %>%
   filter(region == "Melbourne") %>%
-  autoplot(filter(tourism_agg, year(month) > 2012), level = 95)
+  autoplot(filter(tourism_agg, year(month) > 2012), level = NULL)
 ```
 
 ## Example: Australian tourism
@@ -918,7 +792,7 @@ fc %>%
 ```{r fctourism5, dependson='fctourism', echo=TRUE, fig.width=12, fig.height=4.5}
 fc %>%
   filter(region == "Snowy Mountains") %>%
-  autoplot(filter(tourism_agg, year(month) > 2012), level = 95)
+  autoplot(filter(tourism_agg, year(month) > 2012), level = NULL)
 ```
 
 ## Example: Australian tourism
@@ -927,37 +801,7 @@ fc %>%
 ```{r fctourism6, dependson='fctourism', echo=TRUE, fig.width=12, fig.height=4.5}
 fc %>%
   filter(region == "Barossa") %>%
-  autoplot(filter(tourism_agg, year(month) > 2012), level = 95)
-```
-
-## Example: Australian tourism
-\fontsize{10}{11}\sf
-
-```{r fctourism7, dependson='fctourism', echo=TRUE, fig.width=12, fig.height=4.5}
-fc %>%
-  filter(region == "MacDonnell") %>%
-  autoplot(filter(tourism_agg, year(month) > 2012), level = 95)
-```
-
-## Example: Australian tourism
-\fontsize{10}{11}\sf
-
-```{r fctourismcomb, echo=TRUE}
-fc <- tourism_agg %>%
-  filter(year(month) <= 2015) %>%
-  model(
-    ets = ETS(visitors),
-    arima = ARIMA(visitors)
-  ) %>%
-  mutate(
-    comb = (ets + arima) / 2
-  ) %>%
-  reconcile(
-    ets_adj = min_trace(ets),
-    arima_adj = min_trace(arima),
-    comb_adj = min_trace(comb)
-  ) %>%
-  forecast(h = "2 years")
+  autoplot(filter(tourism_agg, year(month) > 2012), level = NULL)
 ```
 
 ## Example: Australian tourism
@@ -966,7 +810,7 @@ fc <- tourism_agg %>%
 ```{r fcaccuracy, dependson='fctourismcomb', echo=TRUE}
 fc %>%
   accuracy(data = tourism_agg,
-           measures = list(crps = CRPS, ss=skill_score(CRPS)))
+           measures = list(rmsse = RMSSE))
 ```
 
 ## Example: Australian tourism
@@ -975,11 +819,132 @@ fc %>%
 ```{r fcaccuracy2, dependson='fctourismcomb', echo=TRUE}
 fc %>%
   accuracy(tourism_agg,
-           measures = list(crps = CRPS, ss=skill_score(CRPS))) %>%
+           measures = list(mase = MASE, rmsse = RMSSE)) %>%
   group_by(.model) %>%
-  summarise(sspc = mean(ss) * 100) %>%
-  arrange(sspc)
+  summarise(mase = mean(mase), rmsse = sqrt(mean(rmsse^2))) %>%
+  arrange(rmsse)
 ```
+
+## Example: Australian tourism
+\fontsize{7}{7}\sf
+
+```{r fcaccuracy3, dependson='fctourismcomb', echo=FALSE}
+fc %>%
+  accuracy(tourism_agg,
+           measures = list(mase = MASE, rmsse = RMSSE)) %>%
+  mutate(
+    level = case_when(
+      is_aggregated(state) ~ "National",
+      is_aggregated(zone) ~ "State",
+      is_aggregated(region) ~ "Zone",
+      TRUE ~ "Region"
+    ),
+    level = factor(level, levels=c("National","State","Zone","Region"))
+  ) %>%
+  group_by(.model, level) %>%
+  summarise(mase = mean(mase), rmsse = sqrt(mean(rmsse^2))) %>%
+  arrange(level, rmsse)
+```
+
+\begin{textblock}{7}(6,2)
+\begin{block}{}\fontsize{13}{14}\sf
+\begin{itemize}\tightlist
+\item Overall, every reconciliation method is better than the base ETS forecasts.
+\item OLS is best for all levels except national.
+\item Improvements due to reconciliation are greater at lower levels.
+\end{itemize}
+\end{block}
+\end{textblock}
+
+
+# Probabilistic forecast reconciliation
+
+
+## Probabilistic forecast reconciliation
+
+\begin{block}{Key papers}
+\begin{itemize}
+\item Ben Taieb, Taylor, Hyndman (\emph{ICML}, 2017)
+\item Ben Taieb, Taylor, Hyndman (\emph{JASA}, 2020)
+\item Panagiotelis, Gamakumara, Athanasopoulos, Hyndman (2020). \url{robjhyndman.com/publications/coherentprob/}
+\end{itemize}
+\end{block}\pause
+
+ * The reconciled density must lie on the coherent subspace.
+ * The univariate density at each node is a convolution of the densities of its children.
+
+## Construction of reconciled distributions
+
+\begin{block}{Reconciled density of bottom-level}
+Density of bottom-level series under reconciled distribution is
+$$
+  \tilde{f}_{\bm{b}}(\bm{b})=|\bG^*|\int \hat{f}(\bG^{-}\bm{b}+\bG_\perp \bm{a})d\bm{a}
+$$
+\vspace*{-0.5cm}\begin{itemize}
+\item $\hat{f}$ is density of incoherent base probabilistic forecast
+\item $\bm{G^-}$ is $n\times m$ generalised inverse of $\bG$ st $\bG\bG^-=\bm{I}$
+\item $\bm{G_\perp}$ is $n\times (n-m)$ orthogonal complement to $\bG$ st $\bG\bG_\perp=\bm{0}$
+\item $\bG^*=\left(\bG^-\,\vdots\,\bG_\perp\right)$, and $\bm{b}$ and $\bm{a}$ are obtained via\newline the change of variables $\bm{y}=\bG^*\begin{pmatrix}\bm{b}\\\bm{a}\end{pmatrix}$
+\end{itemize}
+\end{block}
+\vspace*{10cm}
+
+## Construction of reconciled distributions
+
+\begin{block}{Reconciled density of full hierarchy}\fontsize{14}{15}\sf
+Density of full hierarchy under reconciled distribution is
+$$
+  \tilde{f}_{\bm{y}}(\bm{y}) =
+  |\bS^*| \tilde{f}_{\bm{b}}({\bS^-\bm{y}})
+  \mathbb{1}\{\bm{y}\in\mathfrak{s}\}
+$$
+\vspace*{-0.6cm}\begin{itemize}
+\item $\bS^*=\begin{pmatrix} {\bS^-}' & \bS_\perp \end{pmatrix}'$
+\item $\bm{S^-}$ is $m\times n$ generalised inverse of $\bS$ such that $\bS^-\bS=\bm{I}$,
+\item $\bm{S_\perp}$ is $n\times (n-m)$ orthogonal complement to $\bS$ such that $\bS'_\perp\bS=\bm{0}$.
+\end{itemize}
+\end{block}
+
+\begin{textblock}{7.7}(0.4,5.8)
+\begin{alertblock}{Gaussian reconciliation}
+If the incoherent base forecasts are $\text{N}(\hat{\bm{\mu}}, \hat{\bm{\Sigma}})$,
+then the reconciled density is $\text{N}(\bS\bG\hat{\bm{\mu}}, \bS\bG\hat{\bm{\Sigma}}\bG'\bS')$.
+\end{alertblock}
+\end{textblock}
+
+\begin{textblock}{6.8}(8.8,5.8)
+\begin{alertblock}{Bootstrap reconciliation}
+Reconciling sample paths from incoherent distributions works.
+\end{alertblock}
+\end{textblock}
+
+\vspace*{10cm}
+
+## Evaluating probabilistic forecasts
+\vspace*{-0.1cm}
+
+\begin{alertblock}{Proper scoring rule}
+optimized when true forecast distribution is used.
+\end{alertblock}\pause\vspace*{-0.1cm}
+
+\begin{block}{}\centering
+\begin{tabular}{llp{4.4cm}}
+    \bfseries Scoring Rule &
+    \bfseries Coherent v Incoherent &
+    \bfseries Coherent v Coherent\\
+    \midrule
+    Log Score & Not proper & $\bullet$ Ordering preserved\par\hspace*{0.3cm} if compared using\par\hspace*{0.3cm} bottom-level only\\
+    Energy Score & Proper & $\bullet$ Full hierarchy\par\hspace*{0.3cm} should be used. \par $\bullet$ Rankings may\par\hspace*{0.3cm} change otherwise.
+\end{tabular}
+\end{block}
+
+## Score optimal reconciliation
+
+Algorithm proposed by Panagiotelis et al (2020) for optimizing $\bG$ using stochastic gradient descent to optimize Energy Score.
+
+1. Compute base forecasts over a test set.
+2. Compute OLS reconciliation: $\bG = (\bS'\bS)^{-1}\bS'$
+3. Iteratively update $\bG$ using SGD with Adam method and ES objective over a test set
 
 
 # Example: Australian electricity generation
@@ -1118,15 +1083,67 @@ Base forecasts are obtained by jointly bootstrapping residuals.
 \end{block}
 \end{textblock}
 
-# Bayesian forecast reconciliation
+
+# Extensions
+
+## Reconciled linear regression forecasts
+
+If the base forecasts are from a linear regression model, then we can produce coherent forecasts in one step:
+\begin{block}{}
+\centerline{$\tilde{\bm{y}}_{T+h} = \bm{S}(\bm{S}'\bm{\Lambda}_s\bm{S})^{-1}\bm{S}'\bm{\Lambda}_s
+                            \bm{X}_{T+h}^* (\bm{X}'\bm{X})^{-1} \bm{X}'\bm{Y}$}
+\begin{itemize}\tightlist
+\item $\bm{X}$ is matrix of predictors for training set
+\item $\bm{X}^*_{T+h}$ is vector of predictors for time $T+h$
+\end{itemize}
+\end{block}\pause
+
+\begin{block}{}
+\centerline{$\bm{V}_h = \sigma^2\bm{S}(\bm{S}'\bm{\Lambda}_s\bm{S})^{-1}\bm{S}'\bm{\Lambda}_s\left[1 + \bm{X}_{T+h}^*(\bm{X}'\bm{X})^{-1}(\bm{X}_{T+h}^*)'\right] \bm{\Lambda}_s\bm{S}'(\bm{S}'\bm{\Lambda}_s\bm{S})^{-1}\bm{S}'$}
+\begin{itemize}\tightlist
+\item $\sigma^2$ is variance of base model residuals.
+\end{itemize}
+\end{block}\pause
+
+\begin{alertblock}{}
+Reference: Ashouri, Hyndman, and Shmueli (2019). \url{robjhyndman.com/publications/lhf/}
+\end{alertblock}
+
+## Non-negative forecast reconciliation
+\fontsize{14}{15}\sf
+
+\begin{block}{Minimum trace (MinT) reconciliation}
+The trace of $\bm{V}_h$ is minimized when
+$$
+  \tilde{\bm{b}}_{T+h|T} = (\bS'\bm{W}_h^{-1}\bS)^{-1}\bS'\bm{W}_h^{-1}\hat{\bm{y}}_{T+h|T}
+$$
+subject to unbiasedness preservation ($\bS\bG\bS=\bS$).
+\end{block}\vspace*{-0.1cm}
+
+Wickramasuriya, Turlach and Hyndman (*S&C*, 2020) replace the unbiased constraint by a non-negative constraint:
+$$
+  \tilde{\bm{b}}_{T+h|T}\ge0
+$$
+and show that it can be solved via quadratic programming:
+
+\begin{alertblock}{}
+$$
+  \text{min}_{\bm{b}} \frac12 \bm{b}'\bS'\bm{W}_h^{-1}\bS\bm{b} - \bm{b}'\bS'\bm{W}_h^{-1}\hat{\bm{y}}_{T+h|T} \quad \text{s.t.~~} \bm{b} \ge 0
+$$
+\end{alertblock}
+
+## Temporal and cross-temporal reconciliation
+
+* @Kourentzes2019
+* @Di_Fonzo2020
+* @Punia2020
+
 ## Bayesian forecast reconciliation
 
 * @Park2014
 * @Novak2017
 * @Ellison2020
 * @swissexports
-
-# ML and regularization
 
 ## ML and regularization
 
