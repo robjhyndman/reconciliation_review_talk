@@ -3,7 +3,6 @@ title: "Ten years of forecast reconciliation"
 author: "Rob J Hyndman"
 date: ISF 2020
 fontsize: 14pt
-titlefontsize: 32pt
 classoption: aspectratio=169
 toc: true
 bibliography: refs.bib

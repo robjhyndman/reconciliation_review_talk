@@ -25,13 +25,24 @@
 % Monash title page
 \setbeamertemplate{title page}
 {\placefig{-0.01}{-0.01}{width=1.01\paperwidth,height=1.01\paperheight}{titlepage.png}
-\begin{textblock}{10.5}(5,2.8)\usebeamerfont{title}
-{\color{white}\raggedright\par\inserttitle}
+\begin{textblock}{10.5}(7.2,0.3)
+\fontsize{26}{26}\sf\color[RGB]{204,89,0}\raggedright
+%\textbf{Ten years of forecast reconciliation}
+\bfseries\inserttitle
 \end{textblock}
-\begin{textblock}{7.5}(5,7)
-{\color{white}\raggedright{\insertauthor}\mbox{}\\[0.2cm]
-\insertdate}
+\begin{textblock}{7.5}(7.2,2.5)
+{\color[RGB]{130,92,68}\raggedright{\insertauthor}\quad\insertdate}
+\end{textblock}
+\begin{textblock}{4.2}(11.6,8.3)\pgfsetfillopacity{0.65}
+\setbeamercolor{url}{fg=black,bg=yellow}
+\begin{beamercolorbox}[wd=4.3cm,ht=0.35cm,dp=0.2cm]{block body}
+\fontsize{10}{10}\sf\color[RGB]{72,45,34}~\texttt{robjhyndman.com/isf2020}
+\end{beamercolorbox}
+%\begin{beamerboxesrounded}[lower=block body, upper=block body]{}
+%\fontsize{10}{10}\sf\color[RGB]{72,45,34}~\texttt{robjhyndman.com/isf2020}
+%\end{beamerboxesrounded}
 \end{textblock}}
+
 
 %\renewenvironment{Shaded}{\color{black}\begin{snugshade}\color{black}}{\end{snugshade}\columnbreak}
 
@@ -59,4 +70,5 @@
 \def\var{\text{Var}}
 \newcommand{\btwocol}{\begin{multicols}{2}}
 \newcommand{\etwocol}{\end{multicols}}
+
 
