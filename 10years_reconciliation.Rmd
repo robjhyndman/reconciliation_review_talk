@@ -951,23 +951,45 @@ Algorithm proposed by Panagiotelis et al (2020) for optimizing $\bG$ using stoch
 
 ## Example: Australian electricity generation
 
-\begin{block}{Daily time series from \url{opennem.org.au}}
-\begin{enumerate}
-\item
-  Total = Renewable + Non-renewable
-\item
-  Renewable = Batteries + Hydro + Solar + Wind + Biomass\\
-  Non-Renewable = Coal + Gas + Distillate
-\item
-  Battery = Battery (Discharging) + Battery (Charging)\\
-  Solar = Solar (Rooftop) + Solar (Utility)\\
-  Coal = Black Coal + Brown Coal\\
-  Gas = Gas (OCGT) + Gas (CCGT) + Gas (Steam) + Gas (Recip)
-\end{enumerate}
+```{r elecdiagram, echo=FALSE, eval=FALSE}
+# I don't know how to save this to a format that can be read by latex.
+# So manually exported to png in Rstudio.
+DiagrammeR::mermaid("
+  graph TD
+  A(Total generation)-->R(Renewable)
+  A-->N(Non-renewable)
+  R-->B(Batteries)
+  B-->BD(Discharging)
+  B-->BC(Charging)
+  R-->H(Hydro)
+  R-->S(Solar)
+  S-->SR(Rooftop)
+  S-->SU(Utility)
+  R-->W(Wind)
+  R-->M(Biomass)
+  N-->G(Gas)
+  G-->GO(OCGT)
+  G-->GC(CCGT)
+  G-->GS(Steam)
+  G-->GR(Recip)
+  N-->C(Coal)
+  C-->BlC(Black Coal)
+  C-->BrC(Brown Coal)
+  N-->D(Distillate)
+")
+```
+
+\alert{Daily time series from \url{opennem.org.au}}
+
+\vspace*{10cm}
+
+\placefig{0.3}{2.5}{width=15.5cm}{energy/energy_hierarchy}
+
+\begin{textblock}{10}(4,7)
+\begin{block}{}
+$n=23$ series;\qquad $m=15$ bottom-level series.
 \end{block}
-
-$n=23$ series; $m=15$ bottom-level series.
-
+\end{textblock}
 
 ## Example: Australian electricity generation
 

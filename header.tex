@@ -49,7 +49,7 @@
 %\renewenvironment{Shaded}{\color{black}\begin{snugshade}\color{black}}{\end{snugshade}\columnbreak}
 
 % Tikz plots
-\usetikzlibrary{trees,shapes,arrows,matrix}
+\usetikzlibrary{trees,shapes,arrows,matrix,shadows,positioning}
 \tikzstyle{decision} = [diamond, draw, fill=blue!20,
     text width=4.5em, text badly centered, node distance=4cm, inner sep=0pt]
 \tikzstyle{block} = [rectangle, draw, fill=blue!20,
@@ -58,6 +58,17 @@
 \tikzstyle{cloud} = [draw, ellipse,fill=red!20, node distance=3cm,
     minimum height=2em, text centered]
 \tikzstyle{connector} = [->,thick]
+
+\tikzset{
+  basic/.style  = {draw, text width=2cm, font=\sffamily, rectangle},
+  root/.style   = {basic, text width=3cm, rounded corners=2pt, thin, align=center, fill=red!30},
+  level 2a/.style = {basic, rounded corners=2pt, thin,align=center, fill=blue!50, text width=7em},
+  level 2b/.style = {basic, rounded corners=2pt, thin,align=center, fill=green!50, text width=7em},
+  level 3a/.style = {basic, rounded corners=2pt, thin, align=center, fill=blue!30, text width=4em},
+  level 3b/.style = {basic, rounded corners=2pt, thin, align=center, fill=green!30, text width=4em},
+  level 4a/.style = {basic, rounded corners=2pt, thin, align=left, fill=blue!10, text width=3.5em},
+  level 4b/.style = {basic, rounded corners=2pt, thin, align=left, fill=green!10, text width=3.5em}
+}
 
 % My definitions
 
