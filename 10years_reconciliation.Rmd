@@ -951,43 +951,49 @@ Algorithm proposed by Panagiotelis et al (2020) for optimizing $\bG$ using stoch
 
 ## Example: Australian electricity generation
 
-```{r elecdiagram, echo=FALSE, eval=FALSE}
-# I don't know how to save this to a format that can be read by latex.
-# So manually exported to png in Rstudio.
-DiagrammeR::mermaid("
-  graph TD
-  A(Total generation)-->R(Renewable)
-  A-->N(Non-renewable)
-  R-->B(Batteries)
-  B-->BD(Discharging)
-  B-->BC(Charging)
-  R-->H(Hydro)
-  R-->S(Solar)
-  S-->SR(Rooftop)
-  S-->SU(Utility)
-  R-->W(Wind)
-  R-->M(Biomass)
-  N-->G(Gas)
-  G-->GO(OCGT)
-  G-->GC(CCGT)
-  G-->GS(Steam)
-  G-->GR(Recip)
-  N-->C(Coal)
-  C-->BlC(Black Coal)
-  C-->BrC(Brown Coal)
-  N-->D(Distillate)
-")
-```
+\hspace*{-0.8cm}\begin{minipage}{15.6cm}
+\begin{block}{Daily time series from \url{opennem.org.au}}
+\begin{tikzpicture}
+\tikzstyle{every node}=[rectangle, rounded corners=2pt,draw,inner sep=1pt,fill=red!15]
+\tikzstyle[level distance=.1cm]
+\tikzstyle[sibling distance=7cm]
+\tikzstyle{level 1}=[sibling distance=8cm,set style={{every node}+=[fill=blue!15]}]
+\tikzstyle{level 2}=[sibling distance=16.5mm,font=\small,set style={{every node}+=[fill=green!15]}]
+\tikzstyle{level 3}=[sibling distance=10mm,font=\footnotesize,set style={{every node}+=[fill=yellow]}]
+\node{Total generation}[edge from parent fork down]
+ child {node {Renewable}
+   child {node {Batteries}
+    child {node[xshift=-0.3cm] {Discharging}}
+    child {node[xshift=0.3cm] {Charging}}
+   }
+   child {node {Hydro}}
+   child {node {Solar}
+     child {node {Rooftop}}
+     child {node[xshift=0.3cm] {Utility}}
+   }
+   child {node {Wind}}
+   child {node {Biomass}}
+ }
+ child {node {Non-renewable}
+   child {node {Gas}
+     child {node {OCGT}}
+     child {node {CCGT}}
+     child {node {Steam}}
+     child {node {Recip}}
+   }
+   child {node {Distillate}}
+   child {node {Coal}
+     child {node {Black}}
+     child {node {Brown}}
+   }
+ };
+\end{tikzpicture}
+\end{block}
+\end{minipage}
 
-\alert{Daily time series from \url{opennem.org.au}}
-
-\vspace*{10cm}
-
-\placefig{0.3}{2.5}{width=15.5cm}{energy/energy_hierarchy}
-
-\begin{textblock}{10}(4,7)
-\begin{block}{}
-$n=23$ series;\qquad $m=15$ bottom-level series.
+\begin{textblock}{10}(3,7.8)
+\begin{block}{}\vspace*{-0.1cm}
+\centerline{$n=23$ series\qquad $m=15$ bottom-level series}
 \end{block}
 \end{textblock}
 
