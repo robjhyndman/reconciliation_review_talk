@@ -865,6 +865,7 @@ fc %>%
 \begin{block}{Key papers}
 \begin{itemize}
 \item Ben Taieb, Taylor, Hyndman (\emph{ICML}, 2017)
+\item Jeon, Panagiotelis, Petropoulos (\emph{EJOR}, 2019)
 \item Ben Taieb, Taylor, Hyndman (\emph{JASA}, 2020)
 \item Panagiotelis, Gamakumara, Athanasopoulos, Hyndman (2020). \url{robjhyndman.com/publications/coherentprob/}
 \end{itemize}
@@ -1162,9 +1163,19 @@ $$
 
 ## Temporal and cross-temporal reconciliation
 
-* @Kourentzes2019
-* @Di_Fonzo2020
-* @Punia2020
+
+
+
+
+\alert{Temporal reconciliation}
+
+* Athanasopoulos, Hyndman, Kourentzes, Petropoulos (*EJOR*, 2017)
+
+\alert{Cross-temporal reconciliation}
+
+* Kourentzes, Athanasopoulos (*ATR*, 2019)
+* Punia, Singh, Madaan (*C&IE*, 2020)
+* Di Fonzo,  Girolimetto (2020)
 
 ## Bayesian forecast reconciliation
 
