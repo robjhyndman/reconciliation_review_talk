@@ -1287,7 +1287,7 @@ y_j^{\left[k\right]} = \sum^{jk}_{t=1+(j-1)k}{y_t},\qquad \text{for $j = 1,\dots
 ## Thanks!
 
 \placefig{0}{1.4}{trim = 10 45 0 0, clip=TRUE, width=10cm, height=2.5cm}{roman}
-\placefig{2}{1.4}{width=10cm, height=2.7cm}{george}
+\placefig{2}{1.4}{trim = 20 20 0 0, clip=TRUE, width=10cm, height=2.7cm}{george}
 \placefig{4}{1.4}{trim = 0 10 0 0, clip=TRUE, width=10cm, height=2.5cm}{hanlin}
 \placefig{6}{1.4}{trim = 10 0 0 0, clip=TRUE, width=10cm, height=2.5cm}{earowang}
 \placefig{8}{1.4}{trim = 0 15 0 0, clip=TRUE, width=10cm, height=2.5cm}{alanlee}
@@ -1300,7 +1300,7 @@ y_j^{\left[k\right]} = \sum^{jk}_{t=1+(j-1)k}{y_t},\qquad \text{for $j = 1,\dots
 \placefig{4}{3.9}{trim = 100 30 50 20, clip=TRUE, width=10cm, height=2.5cm}{nikos}
 \placefig{6}{3.9}{trim = 50 30 0 0, clip=TRUE, width=10cm, height=2.5cm}{souhaib}
 \placefig{8}{3.9}{trim = 110 40 50 0, clip=TRUE, width=10cm, height=2.5cm}{james}
-\placefig{10}{3.9}{trim = 50 50 0 0, clip=TRUE, width=10cm, height=2.5cm}{mahdi}
+\placefig{10}{3.9}{trim = 40 40 0 0, clip=TRUE, width=10cm, height=2.5cm}{mahdi}
 \placefig{12}{3.9}{trim = 50 50 0 0, clip=TRUE, width=10cm, height=2.5cm}{christoph}
 \placefig{14}{3.9}{trim = 50 50 0 20, clip=TRUE, width=10cm, height=2.5cm}{fin}
 
@@ -1309,8 +1309,8 @@ y_j^{\left[k\right]} = \sum^{jk}_{t=1+(j-1)k}{y_t},\qquad \text{for $j = 1,\dots
 \placefig{4}{6.4}{trim = 10 0 0 0, clip=TRUE, width=10cm, height=2.5cm}{mahsa}
 \placefig{6}{6.4}{trim = 10 0 0 0, clip=TRUE, width=10cm, height=2.5cm}{florian}
 \placefig{8}{6.4}{trim = 30 0 0 0, clip=TRUE, width=10cm, height=2.5cm}{evan}
-\placefig{10}{6.4}{trim = 5 0 0 0, clip=TRUE, width=10cm, height=2.5cm}{vassilis}
-\placefig{12}{6.4}{trim = 50 0 0 0, clip=TRUE, width=10cm, height=2.5cm}{garth}
+\placefig{10}{6.4}{trim = 5 5 0 0, clip=TRUE, width=10cm, height=2.5cm}{vassilis}
+\placefig{12}{6.4}{trim = 90 0 0 0, clip=TRUE, width=10cm, height=2.5cm}{carla}
 \placefig{14}{6.4}{trim = 0 40 0 0, clip=TRUE, width=10cm, height=2.5cm}{pablo}
 
 
