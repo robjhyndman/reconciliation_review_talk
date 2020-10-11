@@ -1253,8 +1253,8 @@ For a time series  $y_1,\dots,y_T$, observed at frequency $m$, we generate aggre
 y_j^{\left[k\right]} = \sum^{jk}_{t=1+(j-1)k}{y_t},\qquad \text{for $j = 1,\dots,\lfloor T/k\rfloor$}
 \]
 \end{alertblock}
-* $k \in F(m)=\{\text{factors of $m$}\}$. 
-* A single unique hierarchy is only possible when there are no coprime pairs in $F(m)$. 
+* $k \in F(m)=\{\text{factors of $m$}\}$.
+* A single unique hierarchy is only possible when there are no coprime pairs in $F(m)$.
 * $M_k=m/k$ is seasonal period of aggregated series.
 * Proposed by Athanasopoulos, Hyndman, Kourentzes, Petropoulos (*EJOR*, 2017)
 
@@ -1279,16 +1279,41 @@ y_j^{\left[k\right]} = \sum^{jk}_{t=1+(j-1)k}{y_t},\qquad \text{for $j = 1,\dots
 * Punia, Singh, and Madaan (*CIE*, 2020)
 * Spiliotis, Abolghasemi, Hyndman, Petropoulos, Assimakopoulos (2020)
 
-## Thanks
+## Linear combinations
 
-\placefig{0.2}{1.5}{width=10cm, height=3.5cm}{george}
-\placefig{3.7}{1.5}{width=10cm, height=3.5cm}{tas}
-\placefig{8.}{1.5}{width=10cm, height=3.5cm}{mitch}
-\placefig{12.2}{1.5}{width=10cm, height=3.5cm}{earowang}
-\placefig{0.2}{5.3}{width=10cm, height=3.5cm}{roman}
-\placefig{3.7}{5.3}{width=10cm, height=3.5cm}{hanlin}
-\placefig{8.}{5.3}{width=10cm, height=3.5cm}{shanika}
-\placefig{12.2}{5.3}{width=10cm, height=3.5cm}{puwasala}
+* Shang, Hyndman (*JCGS*, 2017)
+* Athanasopoulos, Gamakumara, Panagiotelis, Hyndman, Affan (Springer, 2020)
+
+## Thanks!
+
+\placefig{0}{1.4}{trim = 10 45 0 0, clip=TRUE, width=10cm, height=2.5cm}{roman}
+\placefig{2}{1.4}{width=10cm, height=2.7cm}{george}
+\placefig{4}{1.4}{trim = 0 10 0 0, clip=TRUE, width=10cm, height=2.5cm}{hanlin}
+\placefig{6}{1.4}{trim = 10 0 0 0, clip=TRUE, width=10cm, height=2.5cm}{earowang}
+\placefig{8}{1.4}{trim = 0 15 0 0, clip=TRUE, width=10cm, height=2.5cm}{alanlee}
+\placefig{10}{1.4}{trim = 30 0 0 0, clip=TRUE, width=10cm, height=2.5cm}{mitch}
+\placefig{12}{1.4}{trim = 15 0 0 0, clip=TRUE, width=10cm, height=2.5cm}{shanika}
+\placefig{14}{1.4}{trim = 40 0 0 0, clip=TRUE, width=10cm, height=2.5cm}{tas}
+
+\placefig{0}{3.9}{trim = 30 10 30 0, clip=TRUE, width=10cm, height=2.5cm}{puwasala}
+\placefig{2}{3.9}{trim = 0 10 0 0, clip=TRUE, width=10cm, height=2.5cm}{fotios}
+\placefig{4}{3.9}{trim = 100 30 50 20, clip=TRUE, width=10cm, height=2.5cm}{nikos}
+\placefig{6}{3.9}{trim = 50 30 0 0, clip=TRUE, width=10cm, height=2.5cm}{souhaib}
+\placefig{8}{3.9}{trim = 110 40 50 0, clip=TRUE, width=10cm, height=2.5cm}{james}
+\placefig{10}{3.9}{trim = 50 50 0 0, clip=TRUE, width=10cm, height=2.5cm}{mahdi}
+\placefig{12}{3.9}{trim = 50 50 0 0, clip=TRUE, width=10cm, height=2.5cm}{christoph}
+\placefig{14}{3.9}{trim = 50 50 0 20, clip=TRUE, width=10cm, height=2.5cm}{fin}
+
+\placefig{0}{6.4}{trim = 10 0 0 0, clip=TRUE, width=10cm, height=2.5cm}{berwin}
+\placefig{2}{6.4}{trim = 10 20 0 0, clip=TRUE, width=10cm, height=2.5cm}{galit}
+\placefig{4}{6.4}{trim = 10 0 0 0, clip=TRUE, width=10cm, height=2.5cm}{mahsa}
+\placefig{6}{6.4}{trim = 10 0 0 0, clip=TRUE, width=10cm, height=2.5cm}{florian}
+\placefig{8}{6.4}{trim = 30 0 0 0, clip=TRUE, width=10cm, height=2.5cm}{evan}
+\placefig{10}{6.4}{trim = 5 0 0 0, clip=TRUE, width=10cm, height=2.5cm}{vassilis}
+\placefig{12}{6.4}{trim = 50 0 0 0, clip=TRUE, width=10cm, height=2.5cm}{garth}
+\placefig{14}{6.4}{trim = 0 40 0 0, clip=TRUE, width=10cm, height=2.5cm}{pablo}
+
+
 
 ## More information
 \fontsize{18}{20}\sf
