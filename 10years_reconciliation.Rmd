@@ -5,15 +5,12 @@ date: ISF 2020
 fontsize: 14pt
 classoption: aspectratio=169
 toc: true
-bibliography: refs.bib
-biblio-style: authoryear-comp
 output:
   binb::monash:
     fig_height: 4.33
     fig_width: 7
     colortheme: monashwhite
     keep_tex: yes
-    citation_package: biblatex
     includes:
       in_header: header.tex
 ---
@@ -719,7 +716,7 @@ tourism
 
 ```{r tourismagg, echo=TRUE}
 tourism_agg <- tourism %>%
-  aggregate_key(state / zone / region, visitors = sum(visitors))
+  aggregate_key(state/zone/region, visitors = sum(visitors))
 ```
 
 ```{r tourismagg2, echo=FALSE}
@@ -1161,17 +1158,108 @@ $$
 $$
 \end{alertblock}
 
-## Temporal and cross-temporal reconciliation
+## Temporal reconciliation
+
+\only<1>{\begin{tikzpicture}
+\tikzstyle{every node}=[ellipse,draw,inner sep=0.2pt,fill=red!15,font=\small]
+\tikzstyle[level distance=.1cm]
+\tikzstyle[sibling distance=7cm]
+\tikzstyle{level 1}=[sibling distance=72mm,set style={{every node}+=[fill=blue!15]}]
+\tikzstyle{level 2}=[sibling distance=36mm,set style={{every node}+=[fill=yellow]}]
+\tikzstyle{level 3}=[sibling distance=12mm,font=\scriptsize,set style={{every node}+=[fill=green]}]
+\node{Annual}[edge from parent fork down]
+ child {node {Semi-Annual$_1$}
+   child {node {Q$_1$}
+     child {node {\scriptsize M$_1$}}
+     child {node {\scriptsize M$_2$}}
+     child {node {\scriptsize M$_3$}}
+   }
+   child {node {Q$_2$}
+     child {node {\scriptsize M$_4$}}
+     child {node {\scriptsize M$_5$}}
+     child {node {\scriptsize M$_6$}}
+   }
+ }
+ child {node {Semi-Annual$_2$}
+   child {node {Q$_3$}
+     child {node {\scriptsize M$_7$}}
+     child {node {\scriptsize M$_8$}}
+     child {node {\scriptsize M$_9$}}
+   }
+   child {node {Q$_4$}
+     child {node {\scriptsize M$_{10}$}}
+     child {node {\scriptsize M$_{11}$}}
+     child {node {\scriptsize M$_{12}$}}
+   }
+ };
+\end{tikzpicture}}
+\only<2->{\begin{tikzpicture}
+\tikzstyle{every node}=[ellipse,draw,inner sep=0.2pt,fill=red!15,font=\small]
+\tikzstyle[level distance=.1cm]
+\tikzstyle[sibling distance=7cm]
+\tikzstyle{level 1}=[sibling distance=48mm,set style={{every node}+=[fill=blue!15]}]
+\tikzstyle{level 2}=[sibling distance=24mm,set style={{every node}+=[fill=yellow]}]
+\tikzstyle{level 3}=[sibling distance=12mm,set style={{every node}+=[fill=green]}]
+\node{Annual}[edge from parent fork down]
+ child {node {FourM$_1$}
+   child {node {BiM$_1$}
+     child {node {\scriptsize M$_1$}}
+     child {node {\scriptsize M$_2$}}
+   }
+   child {node {BiM$_2$}
+     child {node {\scriptsize M$_3$}}
+     child {node {\scriptsize M$_4$}}
+   }
+ }
+ child {node {FourM$_2$}
+   child {node {BiM$_3$}
+     child {node {\scriptsize M$_5$}}
+     child {node {\scriptsize M$_6$}}
+   }
+   child {node {BiM$_4$}
+     child {node {\scriptsize M$_7$}}
+     child {node {\scriptsize M$_8$}}
+   }
+ }
+  child {node {FourM$_3$}
+   child {node {BiM$_5$}
+     child {node {\scriptsize M$_9$}}
+     child {node {\scriptsize M$_{10}$}}
+   }
+   child {node {BiM$_6$}
+     child {node {\scriptsize M$_{11}$}}
+     child {node {\scriptsize M$_{12}$}}
+   }
+ };
+\end{tikzpicture}}\pause
+
+\vspace*{10cm}
+
+\only<3>{\begin{textblock}{12}(2,7)
+\begin{alertblock}{}
+\begin{itemize}
+\item[\color{white}\ding{229}] Forecast series at each available frequency.
+\item[\color{white}\ding{229}] Optimally combine forecasts within the same year.
+\end{itemize}
+\end{alertblock}
+\end{textblock}}
+
+## Temporal reconciliation
+\fontsize{14}{15}\sf
+
+For a time series  $y_1,\dots,y_T$, observed at frequency $m$, we generate aggregate series
+\begin{alertblock}{}\vspace*{-0.1cm}
+\[
+y_j^{\left[k\right]} = \sum^{jk}_{t=1+(j-1)k}{y_t},\qquad \text{for $j = 1,\dots,\lfloor T/k\rfloor$}
+\]
+\end{alertblock}
+* $k \in F(m)=\{\text{factors of $m$}\}$. 
+* A single unique hierarchy is only possible when there are no coprime pairs in $F(m)$. 
+* $M_k=m/k$ is seasonal period of aggregated series.
+* Proposed by Athanasopoulos, Hyndman, Kourentzes, Petropoulos (*EJOR*, 2017)
 
 
-
-
-
-\alert{Temporal reconciliation}
-
-* Athanasopoulos, Hyndman, Kourentzes, Petropoulos (*EJOR*, 2017)
-
-\alert{Cross-temporal reconciliation}
+## Cross-temporal reconciliation
 
 * Kourentzes, Athanasopoulos (*ATR*, 2019)
 * Punia, Singh, Madaan (*C&IE*, 2020)
@@ -1179,21 +1267,17 @@ $$
 
 ## Bayesian forecast reconciliation
 
-* @Park2014
-* @Novak2017
-* @Ellison2020
-* @swissexports
+* Park, Nassar (*ICML*, 2014)
+* Novak, McGarvie, and Garcia (2017)
+* Eckert, Hyndman, Panagiotelis (*EJOR*, 2020)
 
 ## ML and regularization
 
-* @Qiao2018
-* @Yang2019
-* @Yagli2019
-* @Abolghasemi2019
-* @Spiliotis2020
-* @Punia2020
-* @mlhts
-
+* Qiao, Huang (*ICIS*, 2018)
+* Yang, Hu, Wang (*ICANN*, 2019)
+* Abolghasemi, Hyndman, Tarr, Bergmeir (2019)
+* Punia, Singh, and Madaan (*CIE*, 2020)
+* Spiliotis, Abolghasemi, Hyndman, Petropoulos, Assimakopoulos (2020)
 
 ## Thanks
 
