@@ -955,22 +955,25 @@ Algorithm proposed by Panagiotelis et al (2020) for optimizing $\bG$ using stoch
 \tikzstyle{every node}=[rectangle, rounded corners=2pt,draw,inner sep=1pt,fill=red!15]
 \tikzstyle[level distance=.1cm]
 \tikzstyle[sibling distance=7cm]
-\tikzstyle{level 1}=[sibling distance=8cm,set style={{every node}+=[fill=blue!15]}]
-\tikzstyle{level 2}=[sibling distance=16.5mm,font=\small,set style={{every node}+=[fill=green!15]}]
+\tikzstyle{level 1}=[sibling distance=8.2cm,set style={{every node}+=[fill=blue!15]}]
+\tikzstyle{level 2}=[sibling distance=16.5mm,font=\footnotesize,set style={{every node}+=[fill=green!15]}]
 \tikzstyle{level 3}=[sibling distance=10mm,font=\footnotesize,set style={{every node}+=[fill=yellow]}]
 \node{Total generation}[edge from parent fork down]
  child {node {Renewable}
-   child {node {Batteries}
+   child {node[xshift=0.2cm] {Batteries}
     child {node[xshift=-0.3cm] {Discharging}}
     child {node[xshift=0.3cm] {Charging}}
    }
-   child {node {Hydro}}
-   child {node {Solar}
-     child {node {Rooftop}}
-     child {node[xshift=0.3cm] {Utility}}
+   child {node[fill=yellow] {Wind}}
+   child {node {Hydro+Pumps}
+     child {node {Hydro}}
+     child {node {Pumps}}
    }
-   child {node {Wind}}
-   child {node {Biomass}}
+   child {node[xshift=0.2cm,fill=yellow] {Biomass}}
+   child {node[xshift=-0.2cm] {Solar}
+     child {node {Rooftop}}
+     child {node[xshift=0.1cm] {Utility}}
+   }
  }
  child {node {Non-renewable}
    child {node {Gas}
@@ -979,7 +982,7 @@ Algorithm proposed by Panagiotelis et al (2020) for optimizing $\bG$ using stoch
      child {node {Steam}}
      child {node {Recip}}
    }
-   child {node {Distillate}}
+   child {node[fill=yellow] {Distillate}}
    child {node {Coal}
      child {node {Black}}
      child {node {Brown}}
