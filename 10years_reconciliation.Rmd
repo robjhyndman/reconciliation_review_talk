@@ -660,7 +660,7 @@ where $\bm{W}_h = \var[\by_{T+h} - \hat{\by}_{T+h|T} \mid \by_1,\dots,\by_n]$
 \only<4>{\begin{alertblock}{Minimum trace (MinT) reconciliation}
 If $\bS\bG$ is a projection, then the trace of $\bm{V}_h$ is minimized when
 $$
-  \bG = (\bS'\bm{W}_h^{-1}\bS)^{-1}\bS'\bm{W}_h^{-1}{h}
+  \bG = (\bS'\bm{W}_h^{-1}\bS)^{-1}\bS'\bm{W}_h^{-1}
 $$
 \end{alertblock}}
 \end{textblock}}
