@@ -10,7 +10,7 @@ output:
     fig_height: 4.33
     fig_width: 7
     colortheme: monashwhite
-    keep_tex: yes
+    keep_tex: no
     includes:
       in_header: header.tex
 ---
