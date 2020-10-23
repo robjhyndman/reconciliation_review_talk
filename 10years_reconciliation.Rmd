@@ -30,7 +30,6 @@ library(patchwork)
 
 # Hierarchical forecasting 20 years ago
 
-
 ## Australian tourism regions
 
 ```{r ausmap, echo=FALSE, message=FALSE, width=20, height=20}
@@ -142,7 +141,6 @@ tourism
 
 ## Australian tourism data
 
-
 ```{r tourism_plots, include=FALSE, fig.width=12, fig.height=5}
 p1 <- tourism %>%
   summarise(visitors = sum(visitors)) %>%
@@ -236,7 +234,6 @@ system("pdfcrop figs/pyramid.pdf figs/pyramid.pdf")
 \end{multicols}
 \end{block}
 \end{textblock}
-
 
 ## Forecast reconciliation research
 
@@ -539,7 +536,6 @@ $t$.
 
 \only<3>{\begin{textblock}{3}(10.5,8)\fontsize{14}{15}\sf\colorbox[gray]{.8}{$\by_{t}=\color{red}\bS\color{blue}\bm{b}_{t}$}\end{textblock}}
 
-
 ## Grouped data
 
 \begin{block}{}
@@ -560,7 +556,6 @@ $t$.
 \end{tikzpicture}
 \end{center}
 \end{block}\pause\fontsize{10}{11}\sf
-
 
 \hbox{$\by_{t}= \begin{pmatrix}
     y_t\\
@@ -723,7 +718,6 @@ tourism_agg <- tourism %>%
 tourism_agg
 ```
 
-
 ## Example: Australian tourism
 \fontsize{10}{11}\sf
 
@@ -853,9 +847,7 @@ fc %>%
 \end{block}
 \end{textblock}
 
-
 # Probabilistic forecast reconciliation
-
 
 ## Probabilistic forecast reconciliation
 
@@ -943,7 +935,6 @@ Algorithm proposed by Panagiotelis et al (2020) for optimizing $\bG$ using stoch
 1. Compute base forecasts over a test set.
 2. Compute OLS reconciliation: $\bG = (\bS'\bS)^{-1}\bS'$
 3. Iteratively update $\bG$ using SGD with Adam method and ES objective over a test set
-
 
 # Example: Australian electricity generation
 
@@ -1060,7 +1051,6 @@ Blue = positive correlation. Red = negative correlation. Large = stronger correl
 \end{block}
 \end{textblock}
 
-
 ## Example: Australian electricity generation
 
 \placefig{0.3}{1.5}{width=7.2cm, height=10cm}{meanenergyscore}
@@ -1093,7 +1083,6 @@ Mean Energy score
 \end{block}
 \end{textblock}
 
-
 ## Example: Australian electricity generation
 
 \placefig{0.3}{1.5}{width=6.cm, height=10cm}{nemenyi_ig}
@@ -1112,31 +1101,53 @@ Base forecasts are obtained by jointly bootstrapping residuals.
 \end{block}
 \end{textblock}
 
-
 # Extensions
+
+## Linear combinations
+
+\begin{alertblock}{Optimal linear reconciliation}
+\begin{align*}\vspace{-0.3cm}
+\bm{y}_t &= \bm{S}\bm{b}_t \\
+\tilde{\bm{y}}_{T+h|T} &= \bm{S}(\bm{S}'\bm{W}_h^{-1}\bm{S})^{-1}\bm{S}'\bm{W}_h^{-1} \hat{\bm{y}}_{T+h|T}
+\end{align*}
+\only<2->{$\bm{S}$ can contain any values, not just 0s and 1s.}
+\end{alertblock}
+
+\only<3->{\begin{block}{}
+\begin{itemize}
+\item Shang, Hyndman (\emph{JCGS}, 2017)
+\item Athanasopoulos, Gamakumara, Panagiotelis, Hyndman, Affan (Springer, 2020)
+\end{itemize}
+\end{block}}
+
+\vspace*{10cm}
 
 ## Reconciled linear regression forecasts
 
 If the base forecasts are from a linear regression model, then we can produce coherent forecasts in one step:
 \begin{block}{}
-\centerline{$\tilde{\bm{y}}_{T+h} = \bm{S}(\bm{S}'\bm{\Lambda}_s\bm{S})^{-1}\bm{S}'\bm{\Lambda}_s
-                            \bm{X}_{T+h}^* (\bm{X}'\bm{X})^{-1} \bm{X}'\bm{Y}$}
+\only<1>{\centerline{$\tilde{\bm{y}}_{T+h|T} = \bm{S}(\bm{S}'\bm{\Lambda}_s\bm{S})^{-1}\bm{S}'\bm{\Lambda}_s \hat{\bm{y}}_{T+h|T} \qquad
+  \hat{\bm{y}}_{T+h|T} = \bm{X}_{T+h}^* (\bm{X}'\bm{X})^{-1} \bm{X}'\bm{T}$}}
+\only<2->{\centerline{$\tilde{\bm{y}}_{T+h|T} = \bm{S}(\bm{S}'\bm{\Lambda}_s\bm{S})^{-1}\bm{S}'\bm{\Lambda}_s
+                            \bm{X}_{T+h}^* (\bm{X}'\bm{X})^{-1} \bm{X}'\bm{Y}$}}
 \begin{itemize}\tightlist
 \item $\bm{X}$ is matrix of predictors for training set
 \item $\bm{X}^*_{T+h}$ is vector of predictors for time $T+h$
 \end{itemize}
-\end{block}\pause
+\end{block}
 
-\begin{block}{}
+\only<3->{\begin{block}{}
 \centerline{$\bm{V}_h = \sigma^2\bm{S}(\bm{S}'\bm{\Lambda}_s\bm{S})^{-1}\bm{S}'\bm{\Lambda}_s\left[1 + \bm{X}_{T+h}^*(\bm{X}'\bm{X})^{-1}(\bm{X}_{T+h}^*)'\right] \bm{\Lambda}_s\bm{S}'(\bm{S}'\bm{\Lambda}_s\bm{S})^{-1}\bm{S}'$}
 \begin{itemize}\tightlist
 \item $\sigma^2$ is variance of base model residuals.
 \end{itemize}
-\end{block}\pause
+\end{block}}
 
-\begin{alertblock}{}
+\only<4->{\begin{alertblock}{}
 Reference: Ashouri, Hyndman, and Shmueli (2019). \url{robjhyndman.com/publications/lhf/}
-\end{alertblock}
+\end{alertblock}}
+
+\vspace*{10cm}
 
 ## Non-negative forecast reconciliation
 \fontsize{14}{15}\sf
@@ -1147,7 +1158,7 @@ $$
   \tilde{\bm{b}}_{T+h|T} = (\bS'\bm{W}_h^{-1}\bS)^{-1}\bS'\bm{W}_h^{-1}\hat{\bm{y}}_{T+h|T}
 $$
 subject to unbiasedness preservation ($\bS\bG\bS=\bS$).
-\end{block}\vspace*{-0.1cm}
+\end{block}\vspace*{-0.1cm}\pause
 
 Wickramasuriya, Turlach and Hyndman (*S&C*, 2020) replace the unbiased constraint by a non-negative constraint:
 $$
@@ -1261,31 +1272,52 @@ y_j^{\left[k\right]} = \sum^{jk}_{t=1+(j-1)k}{y_t},\qquad \text{for $j = 1,\dots
 * $M_k=m/k$ is seasonal period of aggregated series.
 * Proposed by Athanasopoulos, Hyndman, Kourentzes, Petropoulos (*EJOR*, 2017)
 
-
 ## Cross-temporal reconciliation
 
-* Kourentzes, Athanasopoulos (*ATR*, 2019)
-* Punia, Singh, Madaan (*C&IE*, 2020)
-* Di Fonzo,  Girolimetto (2020)
+\begin{block}{}
+\begin{itemize}
+\item Kourentzes, Athanasopoulos (\emph{ATR}, 2019)
+\item Punia, Singh, Madaan (\emph{C\&IE}, 2020)
+\item Di Fonzo,  Girolimetto (2020)
+\end{itemize}
+\end{block}\pause
+
+\begin{alertblock}{ISF talks coming up!}
+\begin{itemize}
+\item[\ding{229}] Mitch O'Hara-Wild: \emph{Probabilistic cross-temporal hierarchies in fable} (in about 3 hours)
+\item[\ding{229}] Tommi Di Fonzo: \emph{Non-negative cross-temporal forecast reconciliation. An application to the Australian domestic tourism flows} (in about 11 hours).
+\end{itemize}
+\end{alertblock}
+
+\vspace*{10cm}
 
 ## Bayesian forecast reconciliation
 
-* Park, Nassar (*ICML*, 2014)
-* Novak, McGarvie, and Garcia (2017)
-* Eckert, Hyndman, Panagiotelis (*EJOR*, 2020)
+\large
+
+\begin{block}{}
+\begin{itemize}
+\item Park, Nassar (\emph{ICML}, 2014)
+\item Novak, McGarvie, Garcia (2017)
+\item Ben Taieb, Koo (\emph{ICKDDM}, 2019)
+\item Corani, Azzimonti, Zaffalon (2019)
+\item Eckert, Hyndman, Panagiotelis (\emph{EJOR}, 2020)
+\end{itemize}
+\end{block}
 
 ## ML and regularization
 
-* Qiao, Huang (*ICIS*, 2018)
-* Yang, Hu, Wang (*ICANN*, 2019)
-* Abolghasemi, Hyndman, Tarr, Bergmeir (2019)
-* Punia, Singh, and Madaan (*CIE*, 2020)
-* Spiliotis, Abolghasemi, Hyndman, Petropoulos, Assimakopoulos (2020)
+\large
 
-## Linear combinations
-
-* Shang, Hyndman (*JCGS*, 2017)
-* Athanasopoulos, Gamakumara, Panagiotelis, Hyndman, Affan (Springer, 2020)
+\begin{block}{}
+\begin{itemize}
+\item Qiao, Huang (\emph{ICIS}, 2018)
+\item Yang, Hu, Wang (\emph{ICANN}, 2019)
+\item Abolghasemi, Hyndman, Tarr, Bergmeir (2019)
+\item Punia, Singh, and Madaan (\emph{CIE}, 2020)
+\item Spiliotis, Abolghasemi, Hyndman, Petropoulos, Assimakopoulos (2020)
+\end{itemize}
+\end{block}
 
 ## Thanks!
 
@@ -1315,8 +1347,6 @@ y_j^{\left[k\right]} = \sum^{jk}_{t=1+(j-1)k}{y_t},\qquad \text{for $j = 1,\dots
 \placefig{10}{6.4}{trim = 5 5 0 0, clip=TRUE, width=10cm, height=2.5cm}{vassilis}
 \placefig{12}{6.4}{trim = 90 0 0 0, clip=TRUE, width=10cm, height=2.5cm}{carla}
 \placefig{14}{6.4}{trim = 0 40 0 0, clip=TRUE, width=10cm, height=2.5cm}{pablo}
-
-
 
 ## More information
 \fontsize{18}{20}\sf
