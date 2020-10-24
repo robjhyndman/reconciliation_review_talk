@@ -1348,6 +1348,25 @@ y_j^{\left[k\right]} = \sum^{jk}_{t=1+(j-1)k}{y_t},\qquad \text{for $j = 1,\dots
 \placefig{12}{6.4}{trim = 90 0 0 0, clip=TRUE, width=10cm, height=2.5cm}{carla}
 \placefig{14}{6.4}{trim = 0 40 0 0, clip=TRUE, width=10cm, height=2.5cm}{pablo}
 
+## Special IJF issue on hierarchical forecasting
+
+\placefig{0}{1.35}{height=8cm, width=7cm}{IJFcover.jpg}
+\begin{textblock}{6.7}(7,1.4)
+\begin{block}{Guest Editors}
+\begin{itemize}
+\item George Athanasopoulous
+\item Rob J Hyndman
+\item Anastasios Panagiotelis
+\item Nikolaos Kourentzes
+\end{itemize}
+\end{block}\vspace*{0.1cm}
+\begin{block}{Call for papers} \url{forecasters.org/blog/}
+\end{block}\vspace*{0.1cm}
+\begin{alertblock}{Submission deadline}
+31 August 2021
+\end{alertblock}
+\end{textblock}
+
 ## More information
 \fontsize{18}{20}\sf
 
