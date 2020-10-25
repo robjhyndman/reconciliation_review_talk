@@ -858,9 +858,9 @@ fc %>%
 \item Ben Taieb, Taylor, Hyndman (\emph{JASA}, 2020)
 \item Panagiotelis, Gamakumara, Athanasopoulos, Hyndman (2020). \url{robjhyndman.com/publications/coherentprob/}
 \end{itemize}
-\end{block}\pause
+\end{block}\pause\vspace*{-0.2cm}
 
- * The reconciled density must lie on the coherent subspace.
+ * The reconciled multivariate density must lie on the coherent subspace.
  * The univariate density at each node is a convolution of the densities of its children.
 
 ## Construction of reconciled distributions
@@ -885,8 +885,11 @@ $$
 Density of full hierarchy under reconciled distribution is
 $$
   \tilde{f}_{\bm{y}}(\bm{y}) =
-  |\bS^*| \tilde{f}_{\bm{b}}({\bS^-\bm{y}})
-  \mathbb{1}\{\bm{y}\in\mathfrak{s}\}
+  |\bS^*|
+  \,
+  \tilde{f}_{\bm{b}}({\bS^-\bm{y}})
+  \,
+  \mathbb{1}\!\{\bm{y}\in\mathfrak{s}\}
 $$
 \vspace*{-0.6cm}\begin{itemize}
 \item $\bS^*=\begin{pmatrix} {\bS^-}' & \bS_\perp \end{pmatrix}'$
@@ -1299,8 +1302,8 @@ y_j^{\left[k\right]} = \sum^{jk}_{t=1+(j-1)k}{y_t},\qquad \text{for $j = 1,\dots
 \begin{itemize}
 \item Park, Nassar (\emph{ICML}, 2014)
 \item Novak, McGarvie, Garcia (2017)
-\item Ben Taieb, Koo (\emph{ICKDDM}, 2019)
 \item Corani, Azzimonti, Zaffalon (2019)
+\item Corani, Azzimonti, Augusto, Zaffalon (2020)
 \item Eckert, Hyndman, Panagiotelis (\emph{EJOR}, 2020)
 \end{itemize}
 \end{block}
@@ -1312,12 +1315,31 @@ y_j^{\left[k\right]} = \sum^{jk}_{t=1+(j-1)k}{y_t},\qquad \text{for $j = 1,\dots
 \begin{block}{}
 \begin{itemize}
 \item Qiao, Huang (\emph{ICIS}, 2018)
+\item Ben Taieb, Koo (\emph{ICKDDM}, 2019)
 \item Yang, Hu, Wang (\emph{ICANN}, 2019)
 \item Abolghasemi, Hyndman, Tarr, Bergmeir (2019)
-\item Punia, Singh, and Madaan (\emph{CIE}, 2020)
 \item Spiliotis, Abolghasemi, Hyndman, Petropoulos, Assimakopoulos (2020)
 \end{itemize}
 \end{block}
+
+## Special IJF issue on hierarchical forecasting
+
+\placefig{0}{1.35}{height=8cm, width=7cm}{IJFcover.jpg}
+\begin{textblock}{6.7}(7,1.4)
+\begin{block}{Guest Editors}
+\begin{itemize}
+\item George Athanasopoulous
+\item Rob J Hyndman
+\item Anastasios Panagiotelis
+\item Nikolaos Kourentzes
+\end{itemize}
+\end{block}\vspace*{0.1cm}
+\begin{block}{Call for papers} \url{bit.ly/ijfhierarchical}
+\end{block}\vspace*{0.1cm}
+\begin{alertblock}{Submission deadline}
+31 August 2021
+\end{alertblock}
+\end{textblock}
 
 ## Thanks!
 
@@ -1347,25 +1369,6 @@ y_j^{\left[k\right]} = \sum^{jk}_{t=1+(j-1)k}{y_t},\qquad \text{for $j = 1,\dots
 \placefig{10}{6.4}{trim = 5 5 0 0, clip=TRUE, width=10cm, height=2.5cm}{vassilis}
 \placefig{12}{6.4}{trim = 90 0 0 0, clip=TRUE, width=10cm, height=2.5cm}{carla}
 \placefig{14}{6.4}{trim = 0 40 0 0, clip=TRUE, width=10cm, height=2.5cm}{pablo}
-
-## Special IJF issue on hierarchical forecasting
-
-\placefig{0}{1.35}{height=8cm, width=7cm}{IJFcover.jpg}
-\begin{textblock}{6.7}(7,1.4)
-\begin{block}{Guest Editors}
-\begin{itemize}
-\item George Athanasopoulous
-\item Rob J Hyndman
-\item Anastasios Panagiotelis
-\item Nikolaos Kourentzes
-\end{itemize}
-\end{block}\vspace*{0.1cm}
-\begin{block}{Call for papers} \url{bit.ly/ijfhierarchical}
-\end{block}\vspace*{0.1cm}
-\begin{alertblock}{Submission deadline}
-31 August 2021
-\end{alertblock}
-\end{textblock}
 
 ## More information
 \fontsize{18}{20}\sf
