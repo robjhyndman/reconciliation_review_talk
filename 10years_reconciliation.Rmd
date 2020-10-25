@@ -1360,7 +1360,7 @@ y_j^{\left[k\right]} = \sum^{jk}_{t=1+(j-1)k}{y_t},\qquad \text{for $j = 1,\dots
 \item Nikolaos Kourentzes
 \end{itemize}
 \end{block}\vspace*{0.1cm}
-\begin{block}{Call for papers} \url{forecasters.org/blog/}
+\begin{block}{Call for papers} \url{bit.ly/ijfhierarchical}
 \end{block}\vspace*{0.1cm}
 \begin{alertblock}{Submission deadline}
 31 August 2021
