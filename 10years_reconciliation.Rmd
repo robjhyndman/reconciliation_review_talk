@@ -1137,7 +1137,7 @@ Base forecasts are obtained by jointly bootstrapping residuals.
 If the base forecasts are from a linear regression model, then we can produce coherent forecasts in one step:
 \begin{block}{}
 \only<1>{\centerline{$\tilde{\bm{y}}_{T+h|T} = \bm{S}(\bm{S}'\bm{\Lambda}_s\bm{S})^{-1}\bm{S}'\bm{\Lambda}_s \hat{\bm{y}}_{T+h|T} \qquad
-  \hat{\bm{y}}_{T+h|T} = \bm{X}_{T+h}^* (\bm{X}'\bm{X})^{-1} \bm{X}'\bm{T}$}}
+  \hat{\bm{y}}_{T+h|T} = \bm{X}_{T+h}^* (\bm{X}'\bm{X})^{-1} \bm{X}'\bm{Y}$}}
 \only<2->{\centerline{$\tilde{\bm{y}}_{T+h|T} = \bm{S}(\bm{S}'\bm{\Lambda}_s\bm{S})^{-1}\bm{S}'\bm{\Lambda}_s
                             \bm{X}_{T+h}^* (\bm{X}'\bm{X})^{-1} \bm{X}'\bm{Y}$}}
 \begin{itemize}\tightlist
