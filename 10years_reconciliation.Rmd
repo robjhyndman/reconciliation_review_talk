@@ -816,8 +816,16 @@ fc %>%
   arrange(rmsse)
 ```
 
+\only<2>{\begin{textblock}{7}(7,5)
+\begin{block}{}\fontsize{13}{14}\sf
+\begin{itemize}\tightlist
+\item Overall, every reconciliation method is better than the base ETS forecasts.
+\end{itemize}
+\end{block}
+\end{textblock}}
+
 ## Example: Australian tourism
-\fontsize{7}{7}\sf
+\fontsize{8}{7}\sf
 
 ```{r fcaccuracy3, dependson='fctourismcomb', echo=FALSE}
 fc %>%
@@ -837,15 +845,14 @@ fc %>%
   arrange(level, rmsse)
 ```
 
-\begin{textblock}{7}(6,2)
+\only<2>{\begin{textblock}{7}(7,5)
 \begin{block}{}\fontsize{13}{14}\sf
 \begin{itemize}\tightlist
-\item Overall, every reconciliation method is better than the base ETS forecasts.
 \item OLS is best for all levels except national.
 \item Improvements due to reconciliation are greater at lower levels.
 \end{itemize}
 \end{block}
-\end{textblock}
+\end{textblock}}
 
 # Probabilistic forecast reconciliation
 
@@ -914,19 +921,19 @@ Reconciling sample paths from incoherent distributions works.
 \vspace*{10cm}
 
 ## Evaluating probabilistic forecasts
-\vspace*{-0.1cm}
 
 \begin{alertblock}{Proper scoring rule}
 optimized when true forecast distribution is used.
-\end{alertblock}\pause\vspace*{-0.1cm}
+\end{alertblock}\pause
 
-\begin{block}{}\centering
+\begin{block}{}\centering\fontsize{14}{15}\sf
 \begin{tabular}{llp{4.4cm}}
     \bfseries Scoring Rule &
     \bfseries Coherent v Incoherent &
     \bfseries Coherent v Coherent\\
     \midrule
     Log Score & Not proper & $\bullet$ Ordering preserved\par\hspace*{0.3cm} if compared using\par\hspace*{0.3cm} bottom-level only\\
+    \midrule
     Energy Score & Proper & $\bullet$ Full hierarchy\par\hspace*{0.3cm} should be used. \par $\bullet$ Rankings may\par\hspace*{0.3cm} change otherwise.
 \end{tabular}
 \end{block}
