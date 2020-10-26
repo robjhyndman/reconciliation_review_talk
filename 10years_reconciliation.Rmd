@@ -189,7 +189,7 @@ for(i in seq_along(aligned_plots)) {
 ```{r pyramid, eval=FALSE, include=FALSE}
 pdf("figs/pyramid.pdf", width=15/2.54, height=15/2.54)
 plot(c(-1,1),c(0.1,1),type="n", bty="n", xlab="", ylab="",xaxt="n", yaxt="n")
-polygon(c(-1,1,0,-1),c(0,0,1,0), col="orange", border=FALSE)
+polygon(c(-1,1,0,-1),c(0,0,1,0), col=rgb(230,172,0,max=255), border=FALSE)
 abline(a=0.666,b=0,col="white",lwd=5)
 abline(a=0.333,b=0,col="white",lwd=5)
 text(0,0.8,"Top-down")
