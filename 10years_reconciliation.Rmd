@@ -1328,7 +1328,7 @@ y_j^{\left[k\right]} = \sum^{jk}_{t=1+(j-1)k}{y_t},\qquad \text{for $j = 1,\dots
 \begin{textblock}{6.7}(7,1.4)
 \begin{block}{Guest Editors}
 \begin{itemize}
-\item George Athanasopoulous
+\item George Athanasopoulos
 \item Rob J Hyndman
 \item Anastasios Panagiotelis
 \item Nikolaos Kourentzes
